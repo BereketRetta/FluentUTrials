@@ -145,7 +145,6 @@
 				7834FBD25BDF59A4DCE40B08 /* Pods-FluentUApp-FluentUAppTests.debug.xcconfig */,
 				B0D6C936B80494522ECFF02F /* Pods-FluentUApp-FluentUAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -485,6 +484,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6V4A9AP8YT;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = FluentUApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -511,6 +511,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6V4A9AP8YT;
 				INFOPLIST_FILE = FluentUApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

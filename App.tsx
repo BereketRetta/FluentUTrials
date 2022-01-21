@@ -28,7 +28,8 @@ import Linek from './assets/Line56.svg';
 import Mic from './assets/mic.svg';
 import Speaker from './assets/speaker.svg';
 import Video from 'react-native-video';
-import MainVids from './assets/Feedback_Drills_Correct.mp4'
+import MainVids from './assets/Feedback_Drills_Correct.mp4';
+import {check, PERMISSIONS, RESULTS, request} from 'react-native-permissions';
 
 const App: () => ReactNode = () => {
   const [first, setfirst] = useState(true);
@@ -46,6 +47,32 @@ const App: () => ReactNode = () => {
       setfirst(false);
       setSecond(true);
     }, 5000);
+    request(PERMISSIONS.IOS.MICROPHONE).then((res) => console.log("REs,,,",res))
+    check(PERMISSIONS.IOS.MICROPHONE)
+      .then(result => {
+        switch (result) {
+          case RESULTS.UNAVAILABLE:
+            console.log(
+              'This feature is not available (on this device / in this context)',
+            );
+            break;
+          case RESULTS.DENIED:
+            request(PERMISSIONS.IOS.MICROPHONE).then((res) => console.log("REs,,,",res))
+            break;
+          case RESULTS.LIMITED:
+            console.log('The permission is limited: some actions are possible');
+            break;
+          case RESULTS.GRANTED:
+            console.log('The permission is granted');
+            break;
+          case RESULTS.BLOCKED:
+            console.log('The permission is denied and not requestable anymore');
+            break;
+        }
+      })
+      .catch(error => {
+        // …
+      });
   });
 
   const onSpeakPress = () => {
@@ -81,25 +108,25 @@ const App: () => ReactNode = () => {
           <MoreHorizontal width={14} height={14} />
         </View>
         <View
-            style={{
-              // backgroundColor: '#2b2b2b',
-              width: 335,
-              height: 103,
-              borderRadius: 12,
-              // borderWidth: 1,
-              alignSelf: 'center',
-              marginTop: 20,
-            }}></View>
+          style={{
+            // backgroundColor: '#2b2b2b',
+            width: 335,
+            height: 103,
+            borderRadius: 12,
+            // borderWidth: 1,
+            alignSelf: 'center',
+            marginTop: 20,
+          }}></View>
         <View style={{marginTop: -18}}>
-          <View style={{opacity: 0,}}>
-          <MainImage />
+          <View style={{opacity: 0}}>
+            <MainImage />
           </View>
-          <Video  
-            source={MainVids}                  // the video file
-            paused={true}                  // make it start    
-            style={styles.backgroundVideo}  // any style you want
-            repeat={true}                   // make it a loop
-        />
+          <Video
+            source={MainVids} // the video file
+            paused={true} // make it start
+            style={styles.backgroundVideo} // any style you want
+            repeat={true} // make it a loop
+          />
         </View>
         {first ? (
           <View>
@@ -113,7 +140,7 @@ const App: () => ReactNode = () => {
                 alignSelf: 'center',
                 marginTop: 20,
                 position: 'absolute',
-                top: -760
+                top: -760,
               }}>
               <View>
                 <Text
@@ -337,7 +364,7 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0,
-    opacity: 0.8
+    opacity: 0.8,
   },
 });
 
