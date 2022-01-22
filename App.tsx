@@ -3,23 +3,10 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
   AppRegistry,
-  Image,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  useColorScheme,
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 import Close from './assets/Close.svg';
 import LineBetween from './assets/LineBetween.svg';
 import MoreHorizontal from './assets/more-horizontal.svg';
@@ -89,6 +76,7 @@ export default class VoiceNative extends React.Component<IProps, IState> {
     this.setState({
       speak: false,
       success: true,
+      paused: false,
     });
     await Voice.stop();
   }
@@ -394,16 +382,6 @@ export default class VoiceNative extends React.Component<IProps, IState> {
           )}
         </View>
       </ImageBackground>
-      // <View>
-      //   <Text style={styles.transcript}>
-      //       Transcript
-      //   </Text>
-      //   {this.state.results.map((result, index) => <Text style={styles.transcript}> {result}</Text>
-      //   )}
-      //   <Button style={styles.transcript}
-      //   onPress={this._startRecognition.bind(this)}
-      //   title="Start"></Button>
-      // </View>
     );
   }
 }
