@@ -32,7 +32,20 @@ import MainVids from './assets/Feedback_Drills_Correct.mp4';
 import Voice from 'react-native-voice';
 import LottieView from 'lottie-react-native';
 
-export default class VoiceNative extends React.Component {
+interface IProps {}
+
+interface IState {
+  playOrPause?: string;
+  recognized?: string;
+  started?: string;
+  results?: string[];
+  first?: boolean;
+  speak?: boolean;
+  success?: boolean;
+  paused?: boolean;
+}
+
+export default class VoiceNative extends React.Component<IProps, IState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -75,24 +88,24 @@ export default class VoiceNative extends React.Component {
   async onSpeakEnds() {
     this.setState({
       speak: false,
-      success: true
-    })
-    await Voice.stop()
+      success: true,
+    });
+    await Voice.stop();
   }
 
   async _startRecognition(e) {
-      this.setState({
-        recognized: '',
-        started: '',
-        results: [],
-        paused: true,
-        speak: true,
-      });
-      try {
-        await Voice.start('en-US');
-      } catch (e) {
-        console.error(e);
-      }
+    this.setState({
+      recognized: '',
+      started: '',
+      results: [],
+      paused: true,
+      speak: true,
+    });
+    try {
+      await Voice.start('en-US');
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   render() {
@@ -100,7 +113,6 @@ export default class VoiceNative extends React.Component {
     setTimeout(() => {
       this.setState({
         first: false,
-        second: true,
       });
     }, 5000);
     return (
@@ -301,7 +313,12 @@ export default class VoiceNative extends React.Component {
                       // borderColor: '#3038FF',
                     }}></View>
                 ) : (
-                  <TouchableOpacity onPress={this.state.speak ? this.onSpeakEnds.bind(this) : this._startRecognition.bind(this)}>
+                  <TouchableOpacity
+                    onPress={
+                      this.state.speak
+                        ? this.onSpeakEnds.bind(this)
+                        : this._startRecognition.bind(this)
+                    }>
                     <View
                       style={{
                         width: 50,
@@ -351,7 +368,7 @@ export default class VoiceNative extends React.Component {
                       // borderWidth: 1,
                       borderRadius: 15,
                       position: 'absolute',
-                      bottom: 30
+                      bottom: 30,
                       // backgroundColor: '#1E1F27',
                     }}>
                     <LottieView
