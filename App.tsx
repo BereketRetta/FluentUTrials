@@ -1,4 +1,4 @@
-// Import all variables
+// Import all assets and packages
 import React from 'react';
 import {
   StyleSheet,
@@ -38,7 +38,7 @@ interface IState {
   second?: boolean;
 }
 
-export default class VoiceNative extends React.Component<IProps, IState> {
+export default class FluentUTrials extends React.Component<IProps, IState> {
   constructor(props) {
     super(props);
     // Define all the states
@@ -130,6 +130,7 @@ export default class VoiceNative extends React.Component<IProps, IState> {
       });
     }, 13000);
     return (
+      // Image background for the blue and green overlays
       <ImageBackground
         source={
           this.state.success
@@ -140,6 +141,7 @@ export default class VoiceNative extends React.Component<IProps, IState> {
         }>
         <View>
           <View style={styles.mianConatiner}>
+            {/* The navbar on top with close and more icons */}
             <Close width={14} height={14} />
             <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>
               <Linek style={{maginTop: 10}} />
@@ -152,21 +154,21 @@ export default class VoiceNative extends React.Component<IProps, IState> {
             <View style={{opacity: 0}}>
               <MainImage />
             </View>
+            {/* The video section */}
             <Video
               source={MainVids} // the video file
               paused={this.state.paused} // make it start
-              // paused={true} // make it start
               style={styles.backgroundVideo} // any style you want
               repeat={true} // make it a loop
             />
           </View>
+          {/* This is the recording animation */}
           <LottieView
             source={require('./Recording.json')}
             style={{width: 50, height: 20}}
             autoPlay
             loop
           />
-          {/* {this.state.speak ? : null} */}
           {this.state.first ? (
             <View>
               <View style={styles.estupeContainer}>
@@ -184,6 +186,7 @@ export default class VoiceNative extends React.Component<IProps, IState> {
             <View>
               <View style={styles.firstContainer}>
                 {this.state.success ? (
+                  // This is the results of the speech recognition
                   <View>
                     <View
                       style={[
@@ -249,6 +252,7 @@ export default class VoiceNative extends React.Component<IProps, IState> {
                       },
                     ]}></View>
                 ) : (
+                  // The mic onPress speech recognition
                   <TouchableOpacity
                     onPress={
                       this.state.speak
@@ -464,4 +468,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('VoiceNative', () => VoiceNative);
+AppRegistry.registerComponent('FluentUTrials', () => FluentUTrials);
