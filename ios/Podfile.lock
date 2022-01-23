@@ -298,6 +298,8 @@ PODS:
     - React-Core
   - react-native-voice (0.3.0):
     - React
+  - react-native-webview (11.17.0):
+    - React-Core
   - React-perflogger (0.67.0)
   - React-RCTActionSheet (0.67.0):
     - React-Core/RCTActionSheetHeaders (= 0.67.0)
@@ -430,6 +432,7 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - react-native-video (from `../node_modules/react-native-video`)
   - react-native-voice (from `../node_modules/react-native-voice`)
+  - react-native-webview (from `../node_modules/react-native-webview`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -516,6 +519,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-video"
   react-native-voice:
     :path: "../node_modules/react-native-voice"
+  react-native-webview:
+    :path: "../node_modules/react-native-webview"
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -588,6 +593,7 @@ SPEC CHECKSUMS:
   React-logger: 5d42caeaf0c31a9b29efb33e10e7f7031f958bfd
   react-native-video: a4c2635d0802f983594b7057e1bce8f442f0ad28
   react-native-voice: 9829ac5dc9300687c5f215bddf6c9645e82923fc
+  react-native-webview: 10996be8bcc5e37a30dbc139fc544bb651dc8612
   React-perflogger: 9454d63e7027e0830fa3e527628558160684f5dd
   React-RCTActionSheet: 240d798e2f5bd1ba2e85503a00fd390f560e6827
   React-RCTAnimation: 0ebf0df36838057097b8c6a30d1036531f8c7b1e
