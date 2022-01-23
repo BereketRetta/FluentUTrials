@@ -192,11 +192,11 @@ export default class VoiceNative extends React.Component<IProps, IState> {
                       fontSize: 20,
                       marginVertical: 5,
                     }}>
-                    Hola, ¿cómo están tú y tu familia estos días?
+                    estupendo trabajo
                   </Text>
                   <Text
                     style={{textAlign: 'center', color: '#fff', opacity: 0.5}}>
-                    Hi, how are you and your family these days?
+                    Great job!
                   </Text>
                 </View>
               </View>
@@ -287,7 +287,7 @@ export default class VoiceNative extends React.Component<IProps, IState> {
                           marginHorizontal: 5,
                           fontSize: 20,
                         }}>
-                        La estamos haciendo muy bien.
+                        estupendo trabajo
                       </Text>
                     </View>
                     <Text
@@ -297,7 +297,7 @@ export default class VoiceNative extends React.Component<IProps, IState> {
                         opacity: 0.5,
                         marginTop: 5,
                       }}>
-                      We are doing very well
+                      Great job
                     </Text>
                   </View>
                 )}
