@@ -27,9 +27,11 @@ interface IState {
   started?: string;
   results?: string[];
   first?: boolean;
+  checking?: boolean;
   speak?: boolean;
   success?: boolean;
   paused?: boolean;
+  second?: boolean;
 }
 
 export default class VoiceNative extends React.Component<IProps, IState> {
@@ -39,10 +41,12 @@ export default class VoiceNative extends React.Component<IProps, IState> {
       recognized: '',
       started: '',
       results: [],
-      first: true,
+      first: false,
+      second: false,
       speak: false,
       success: false,
       paused: false,
+      checking: true,
     };
 
     Voice.onSpeechStart = this.onSpeechStart.bind(this);
@@ -99,10 +103,19 @@ export default class VoiceNative extends React.Component<IProps, IState> {
   render() {
     console.log('This.state,,,', this.state);
     setTimeout(() => {
+      this.state.checking === true ? 
+      this.setState({
+        first: true,
+        checking: false
+      }) : null
+    }, 9000);
+    setTimeout(() => {
       this.setState({
         first: false,
+        second: true,
+        paused: true,
       });
-    }, 5000);
+    }, 13000);
     return (
       <ImageBackground
         source={
@@ -145,6 +158,7 @@ export default class VoiceNative extends React.Component<IProps, IState> {
             <Video
               source={MainVids} // the video file
               paused={this.state.paused} // make it start
+              // paused={true} // make it start
               style={styles.backgroundVideo} // any style you want
               repeat={true} // make it a loop
             />
@@ -188,7 +202,7 @@ export default class VoiceNative extends React.Component<IProps, IState> {
               </View>
             </View>
           ) : null}
-          {this.state.first ? null : (
+          {this.state.first ? null : this.state.second ? (
             <View>
               <View
                 style={{
@@ -212,8 +226,8 @@ export default class VoiceNative extends React.Component<IProps, IState> {
                         borderWidth: 1,
                         alignSelf: 'center',
                         marginTop: -30,
-                        backgroundColor: '#05AA1F',
-                        borderColor: '#05AA1F',
+                        backgroundColor: this.state.results[0] === 'Great job' ?  '#05AA1F' : 'red',
+                        borderColor: this.state.results[0] === 'Great job' ?  '#05AA1F' : 'red',
                         position: 'absolute',
                       }}>
                       <Text
@@ -224,7 +238,7 @@ export default class VoiceNative extends React.Component<IProps, IState> {
                           color: '#fff',
                           fontWeight: '500',
                         }}>
-                        A+
+                        {this.state.results[0] === 'Great job' ?  'A+' : 'C-'}
                       </Text>
                     </View>
                     <Text
@@ -232,11 +246,11 @@ export default class VoiceNative extends React.Component<IProps, IState> {
                         textAlign: 'center',
                         marginTop: 20,
                         fontSize: 14,
-                        color: '#05AA1F',
+                        color: this.state.results[0] === 'Great job' ? '#05AA1F' : 'red',
                         fontWeight: '500',
                         // position: 'absolute'
                       }}>
-                      WELL DONE!
+                     {this.state.results[0] === 'Great job' ? 'WELL DONE!' : 'TRY AGAIN'}
                     </Text>
                   </View>
                 ) : null}
@@ -379,7 +393,7 @@ export default class VoiceNative extends React.Component<IProps, IState> {
                 )}
               </View>
             </View>
-          )}
+          ) : null}
         </View>
       </ImageBackground>
     );
