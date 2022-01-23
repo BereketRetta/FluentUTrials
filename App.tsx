@@ -154,8 +154,8 @@ export default class VoiceNative extends React.Component<IProps, IState> {
             </View>
             <Video
               source={MainVids} // the video file
-              // paused={this.state.paused} // make it start
-              paused={true} // make it start
+              paused={this.state.paused} // make it start
+              // paused={true} // make it start
               style={styles.backgroundVideo} // any style you want
               repeat={true} // make it a loop
             />
